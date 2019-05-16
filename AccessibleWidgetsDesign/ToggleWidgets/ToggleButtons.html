@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>Toggle Button</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+		
+			$(document).ready(function()
+			{
+				$("#addNewRecord, #addNewlang").keydown(function(e)
+				{
+					if(e.keyCode == 32)
+					{
+						if($(this).attr("id") == "addNewRecord")
+						{
+							changeToggle();
+						}
+					}
+				});
+			});	
+			function changeToggle() 
+			{
+				var switchElem = document.getElementById("on");
+				var switchElem1 = document.getElementById("off");
+				if( $(switchElem).text() === "" )
+				{
+					$(switchElem).text("Yes");
+					$(switchElem1).text("");
+					$("#addNewRecord").attr("aria-pressed", "true").toggleClass("onCheck");
+					$("#on").css({"float":"right", "margin":"5px 10px 0px 0px"});
+					//$("[name = recordCheckbox]").prop("checked",true);
+				}
+				else
+				{
+					$(switchElem1).text("No");
+					$(switchElem).text("");
+					$("#addNewRecord").attr("aria-pressed", "false").toggleClass("onCheck");
+					$("#off").css({"float":"left", "margin":"5px 0px 0px 10px"});
+					//$("[name = recordCheckbox]").prop("checked",false);
+				}
+			}
+			function langToggle() 
+			{
+				var switchElem = document.getElementById("onLang");
+				var switchElem1 = document.getElementById("offLang");
+				if( $(switchElem).text() === "" )
+				{
+					$(switchElem).text("Yes");
+					$(switchElem1).text("");
+					$("#addNewLang").attr("aria-checked", "true").toggleClass("onCheck");
+					$("#onLang").css({"float":"right", "margin":"5px 10px 0px 0px"});
+					$("[name = langCheckbox]").prop("checked",true);
+				}
+				else
+				{
+					$(switchElem1).text("No");
+					$(switchElem).text("");
+					$("#addNewLang").attr("aria-checked", "false").toggleClass("onCheck");
+					$("#offLang").css({"float":"left", "margin":"5px 0px 0px 10px"});
+					$("[name = langCheckbox]").prop("checked",false);
+				}
+			}
+		</script>
+		<style>
+		.container{
+			width:100%;
+			height:auto;
+			border:solid;
+		}
+		.containerElem{
+			width:100px;
+			height:30px;
+			background: linear-gradient(to right, red 0%, red 50%, grey 50%, grey 100%);
+			outline:none;
+			border:none;
+			color:white;
+			border-radius:5px;
+			position:relative;
+			left:10px;
+		}
+		.containerElem:focus{
+			border:solid blue 2px;
+		}
+		.onCheck{
+			background: linear-gradient(to left, green 0%, green 50%, grey 50%, grey 100%);
+		}
+		.off{
+			float:left;
+			margin : 5px 0px 0px 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<label id="forLabel">Add New Record</label>
+			<div aria-pressed="false" tabindex="0" role="button" aria-labelledby="forLabel" onclick="changeToggle();" id="addNewRecord" class="containerElem">
+				<span class="on" id="on"></span>
+				<span class="off" id="off">No</span>
+			</div>
+			<br>
+			<label id="langLabel">Add New language</label>
+			<div aria-checked="false" tabindex="0" role="switch" aria-labelledby="langLabel" onclick="langToggle();" id="addNewLang" class="containerElem">
+				<span class="on" id="onLang"></span>
+				<span class="off" id="offLang">No</span>
+				<input type="checkbox" name="langCheckbox" id ="addNewlang" style="display:none">
+			</div>
+		</div>
+	</body>
+</html>
+	

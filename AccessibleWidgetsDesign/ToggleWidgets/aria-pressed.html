@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Switch example</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+	
+</style>
+</head>
+<body>
+	<label id="forLabel">Add Second Party</label>
+	<div aria-checked="false" tabindex="0" role="switch" aria-labelledby="forLabel" onclick="changeToggle();" id="ICMAddSecondParty" class="icmattribute icm-checkbox" data-datatype="Boolean" data-metadata-display-name="Add Second Party" data-metadata-display-name-plaintext="Add Second Party" data-bind="switchOn: ICMAddSecondParty"  data-iseditformfield="false">
+        <span class="icm-on" id="icm-on" aria-hidden="true"></span>
+        <span class="icm-off" id="icm-off" aria-hidden="true">No</span>
+		<input type="checkbox" name="ICMAddSecondParty" id ="ICMAddSecondParty" aria-hidden="true" style="display:none">
+    </div>
+
+<script>
+function changeToggle() 
+{
+  var switchElem = document.getElementById("icm-on");
+  var switchElem1 = document.getElementById("icm-off");
+	if( $(switchElem).text() === "" )
+	{
+		$(switchElem).text("Yes");
+		$(switchElem1).text("");
+		$("#ICMAddSecondParty").attr("aria-checked", "true");
+		$("[name = ICMAddSecondParty]").prop("checked",true);
+	}
+	else
+	{
+		$(switchElem1).text("No");
+		$(switchElem).text("");
+		$("#ICMAddSecondParty").attr("aria-checked", "false");
+		$("[name = ICMAddSecondParty]").prop("checked",false);
+	}
+	/*var switchElem = document.getElementById("icm-on");
+  var switchElem1 = document.getElementById("icm-off");
+  //var checkedState = switchElem.innerText == "" ? false: true;
+  if(checkedState) {
+    //uncheck
+	 $("#ICMAddSecondParty").prop("checked",false); 	
+    switchElem.innerText = "";
+    switchElem1.innerText = "No";
+    document.getElementById("ICMAddSecondParty").setAttribute("aria-checked", "false");
+	
+	
+  }
+  else	
+  {
+	$("#ICMAddSecondParty").prop("checked",false);
+    switchElem.innerText = "Yes";
+    switchElem1.innerText = "";
+    document.getElementById("ICMAddSecondParty").setAttribute("aria-checked", "true");
+	*/
+  
+}
+</script>
+</body>
+</html>
