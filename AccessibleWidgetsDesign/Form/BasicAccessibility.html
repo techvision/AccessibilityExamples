@@ -1,0 +1,314 @@
+<html lang="en">
+	<head>
+		<title>Accessibility HTML Testing Demo</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<style>
+			body{
+				background:#e0e2e4;
+			}
+			fieldset{
+				border:none;
+			}
+			#qualiDetials 
+			{
+				border-radius:10px;
+			}
+			#pd input[type="text"], input[type="email"]{
+				margin-right: 1000px;
+				float:right;
+				height:30px;
+				width:200px;
+				border-radius:5px;
+				background:transparent;
+				border:solid mediumseagreen 2px;
+				padding-left:15px;
+			}
+			#td input[type="text"], input[type="email"]{
+				height:30px;
+				width:200px;
+				border-radius:5px;
+				background:transparent;
+				border:solid mediumseagreen 2px;
+				padding-left:15px;
+			}
+			#qd input[type="text"], input[type="email"]{
+				height:30px;
+				width:200px;
+				border-radius:5px;
+				background:transparent;
+				border:solid mediumseagreen 2px;
+				padding-left:15px;
+			}
+			input[type="button"],[type="reset"]
+			{
+				border:none;
+				background:#217ff3;
+				width:100px;
+				height:35px;
+				box-shadow: 1px 1px 1px;
+				color:white;
+			}
+			input[type="button"]:focus,[type="reset"]:focus{
+				outline:dotted blue 3px;
+			}
+			 
+			label{
+			font-size:1.1em;
+			font-weight:bold;
+			}
+		</style>
+		<script>
+			$(document).ready(function()
+			{
+				$("#pd input, #td input,#qd input").focusin(function()
+				{
+					$(this).css("outline","dashed blue 3px");
+				});
+				$("#pd input, #td input,#qd input").focusout(function()
+				{
+					$(this).css("outline","none");
+				});
+				$("#btnShow").click(function()
+				{
+					var fname=$("#fname").val();
+					var lname=$("#lname").val();
+					var mname=$("#mname").val();
+					var eml= $("#email").val();
+					var mob= $("#mob").val();
+					$("#unameProf").text("Showing Profile For "+fname+" "+mname+" "+lname);
+					
+					
+					if( (fname != "") && (lname != "") && (mname != "") && (eml != "") && (mob != "") )
+					{
+						$("#dispPD").append("<tr><td>First Name</td>"+ 
+											  "<td>"+fname+"</td>"+
+										  "</tr>"+
+										  "<tr><td>Middle Name</td>"+
+											   "<td>"+mname+"</td>"+
+										  "</tr>"+
+										  "<tr><td>Last Name</td>"+
+											   "<td>"+lname+"</td>"+
+										  "</tr>"+
+										  "<tr><td>Email Id</td>"+
+											   "<td>"+eml+"</td>"+
+										  "</tr>"+
+										  "<tr><td>Mobile</td>"+
+											   "<td>"+mob+"</td>"+
+										  "</tr>");
+										  $("#btnShow").attr("disabled","disabled");
+					}
+					else if(fname == "")
+					{
+						$("#frname").css({"display":"block", "color":"red"});
+						$("#frname").fadeOut(5000);
+					}
+					else if(lname == "")
+					{
+						$("#lsname").css({"display":"block", "color":"red"});
+						$("#lsname").fadeOut(5000);
+						
+					}
+					else if(eml == "")
+					{
+						$("#emailid").css({"display":"block", "color":"red"});
+						$("#emailid").fadeOut(5000);
+					}
+					else if(mob == "")
+					{
+						$("#mobno").css({"display":"block", "color":"red"});
+						$("#mobno").fadeOut(5000);
+					}
+					
+					//Qualification details checking empty
+					$("#qualiDetials input").each(function()
+					{
+						if ($.trim($(this).val()) == '') 
+						{
+							isValid = false;	
+							$(this).css({"border": "1px solid red","background": "#FFCECE"});
+							$("#dispQD").find("tr:not(:first)").remove();
+						}
+						else 
+						{
+							$(this).css({"border": "","background": ""});
+						}
+						//if (isValid == false)
+							//e.preventDefault();
+					});
+					
+					$("#dispQD").append("<tr><td>"+$('#qualiDetials').find("tr:eq(1)").find("input:eq(0)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(1)").find("input:eq(1)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(1)").find("input:eq(2)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(1)").find("input:eq(3)").val()+"</td>"+
+										"</tr>"+
+										"<tr><td>"+$('#qualiDetials').find("tr:eq(2)").find("input:eq(0)").val()+"</td>"+
+										   	"<td>"+$('#qualiDetials').find("tr:eq(2)").find("input:eq(1)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(2)").find("input:eq(2)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(2)").find("input:eq(3)").val()+"</td>"+
+										"</tr>"+
+										"<tr><td>"+$('#qualiDetials').find("tr:eq(3)").find("input:eq(0)").val()+"</td>"+
+										   	"<td>"+$('#qualiDetials').find("tr:eq(3)").find("input:eq(1)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(3)").find("input:eq(2)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(3)").find("input:eq(3)").val()+"</td>"+
+										"</tr>"+
+										"<tr><td>"+$('#qualiDetials').find("tr:eq(4)").find("input:eq(0)").val()+"</td>"+
+										   	"<td>"+$('#qualiDetials').find("tr:eq(4)").find("input:eq(1)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(4)").find("input:eq(2)").val()+"</td>"+
+											"<td>"+$('#qualiDetials').find("tr:eq(4)").find("input:eq(3)").val()+"</td>"+
+										"</tr>"
+										);
+										$("#skillsList").append("<li>"+$('#sk1').val()+"</li>"+
+																"<li>"+$('#sk2').val()+"</li>"+
+																"<li>"+$('#sk3').val()+"</li>"+
+																"<li>"+$('#sk4').val()+"</li>"+
+																"<li>"+$('#sk5').val()+"</li>");
+					$("#dispQD td").each(function()
+					{
+						if( $(this).text() == "")
+						{
+							$(this).remove();
+						}
+					});
+					
+					$("#dispQD tr").each(function()
+					{
+						if( $(this).children().length == 0)
+						{
+							$(this).remove();
+						}
+					});
+					
+					$("#skillsList li").each(function()
+					{
+						if( $(this).text() == "")
+						{
+							$(this).remove();
+						}
+					});
+				});
+				$("#btnReset").click(function()
+				{
+					$("#skillsList").empty();
+					$("#dispPD").find("tr:not(:first)").remove();
+					$("#dispQD").find("tr:not(:first)").remove();
+					$("#btnShow").removeAttr("disabled");
+					$("#unameProf").text("Showing Profile For ");
+					$("#qualiDetials input").css({"border": "","background": ""});
+					$("#dataClear").css("display","block").fadeOut(5000);
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+	<main>
+		<section aria-label="Update Profile">
+			<center><h1>Update Profile</h1></center>
+			<h2>Personal Details</h2>
+			
+			<form aria-label="Update Profile" method="post">
+				<fieldset id="pd">
+					<legend>Personal Details</legend>
+						<label for="fname">First Name</label><span aria-hidden="true" style="color:red;">*</span>
+						<input type="text" id="fname" placeholder="First Name" aria-label="first name" aria-required="true">
+						<label style="display:none; margin-left:500px;" id="frname" role="alert">First Name Should Not Empty</label><Br><br>
+						<label for="mname">Middle Name</label>
+						<input type="text" id="mname" placeholder="Middle Name" aria-label="Middle Name"><br><Br>
+						<label for="lname">Last Name</label><span aria-hidden="true" style="color:red;">*</span>
+						<input type="text" id="lname" placeholder="Last Name" aria-label="Last name" aria-required="true">
+						<label style="display:none; margin-left:500px;" id="lsname" role="alert">Last Name should Not Empty</label><Br><br>
+						<label for="email">Email Id</label><span aria-hidden="true" style="color:red;">*</span>
+						<input type="email" id="email" placeholder="Email Id" aria-label="Email Id" aria-required="true">
+						<label style="display:none; margin-left:500px;" id="emailid" role="alert">Email Should Not Empty</label><Br><br>
+						<label for="mob">Mobile Number</label><span aria-hidden="true" style="color:red;">*</span>
+						<input type="text" id="mob" placeholder="Mobile Number" aria-label="Mobile Number" aria-required="true">
+						<label style="display:none; margin-left:500px;" id="mobno" role="alert"> Mobile Should Not Empty</label><Br><br>
+				</fieldset>
+				<h2>Qualification Details</h2>
+				<fieldset id="qd">
+					<legend>Qualification Details</legend>
+						<table aria-label="Qualification details" border="1" id="qualiDetials">
+							<tr style="background:rgb(185, 144, 147)">
+								<th id="uni">University/Board</th>
+								<th id="deg">Education/Degree</th>
+								<th id="per">Percent/Grade</th>
+								<th id="perY">Year Passed out</th>
+							</tr>
+							<tr>
+								<td><input type="text" aria-labelledby="uni"></td>
+								<td><input type="text" aria-labelledby="deg"></td>
+								<td><input type="text" aria-labelledby="per"></td>
+								<td><input type="text" aria-labelledby="perY"></td>
+							</tr>
+							<tr>
+								<td><input type="text" aria-labelledby="uni"></td>
+								<td><input type="text" aria-labelledby="deg"></td>
+								<td><input type="text" aria-labelledby="per"></td>
+								<td><input type="text" aria-labelledby="perY"></td>
+							</tr>
+							<tr>
+								<td><input type="text" aria-labelledby="uni"></td>
+								<td><input type="text" aria-labelledby="deg"></td>
+								<td><input type="text" aria-labelledby="per"></td>
+								<td><input type="text" aria-labelledby="perY"></td>
+							</tr>
+							<tr>
+								<td><input type="text" aria-labelledby="uni"></td>
+								<td><input type="text" aria-labelledby="deg"></td>
+								<td><input type="text" aria-labelledby="per"></td>
+								<td><input type="text" aria-labelledby="perY"></td>
+							</tr>
+						</table>
+				</fieldset>
+				<h2>Technical Details</h2>
+				<fieldset id="td">
+					<legend>Technical Details</legend>
+					<label for="sk1">Skill 1</label>
+					<input type="text" id="sk1" placeholder="Skill 1" aria-label="Skill One" aria-required="true"><br><br>
+					<label for="sk2">Skill 2</label>
+					<input type="text" id="sk2" placeholder="Skill 2" aria-label="Skill 2" aria-required="true"><br><br>
+					<label for="sk3">Skill 3</label>
+					<input type="text" id="sk3" placeholder="Skill 3" aria-label="Skill3" aria-required="true"><br><br>
+					<label for="sk4">Skill 4</label>
+					<input type="text" id="sk4" placeholder="Skill 4" aria-label="Skill 4" aria-required="true"><br><br>
+					<label for="sk5">Skill 5</label>
+					<input type="text" id="sk5" placeholder="Skill 5" aria-label="Skill 5" aria-required="true"><br><br>
+				</fieldset>	
+				<div role="group" aria-label="Buttons Panel">
+					<input type="button" aria-label="Show Profile" role="button" id="btnShow" value="Show Profile" aria-describedby="showdescr">
+					<input type="reset" aria-label="Reset" id="btnReset" value="Reset">
+				</div>
+				<p id="showdescr" style="display:none;">Clicking the Show Profile Button Details will show in Show Profile Section</p>
+			</form>
+		</section>
+		
+		<section aria-label="Show Profile">
+			<div >
+				<center><h1 id="unameProf" role="region" aria-label="Show Profile" aria-live="assertive" aria-atomic="true" aria-relevent="text"> Showing Profile For</h1></center>
+				<h2>Personal Details</h2>
+				<table id="dispPD" aria-label="Personal Details" border="1">
+					<tr style="background:grey;">
+						<th>Field Name</th>
+						<th>Value</th>
+					</tr>
+				</table>
+				<h2>Qualification Details</h2>
+				<table id="dispQD" aria-label="Qualification Details" border="1">
+					<tr style="background:grey">
+						<th>University/Board</th>
+						<th>Education/Degree</th>
+						<th>Percent/Grade</th>
+						<th>Year Passed out</th>
+					</tr>
+				</table>
+				
+				<h2>Technical Details</h2>
+				<ul aria-label="Student Skills" id="skillsList">
+					
+				</ul>
+			</div>
+			<p role="alert" aria-live="assertive" aria-atomic="true" aria-relevent="removals" style="display:none" id="dataClear">Profile Data Cleared Successfully..!!</p>
+		</section>
+		</main>
+	</body>
+</html>
