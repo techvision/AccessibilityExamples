@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>Grid Layout Test Examples</title>
+		<link rel="stylesheet" href="../Web Grid Example/WebGrid.css" type="text/css">
+		<script src="../Web Grid Example/jquery-3.3.1-min.js"></script>
+		<script src="../Web Grid Example/WebGrid.js"></script>
+		<script src="../Web Grid Example/EmailGridFixes.js"></script>
+	</head>
+	<body>
+		<header id="header">
+			<h1 id="wge">Accessibility Advanced Grid Example For Mail Receipient Box</h1>
+			<p id="description" style="display: none">Type Text and press enter to add your receipients</p>
+		</header>
+		<main>
+			<div class="send_to_box">
+				<span id="sendto_lbl" style="color:white;">Send To:</span>
+				
+				<div aria-labelledby="header" aria-describedby="description" role="grid" class="itemlist" role="application">
+					<div role="row" class="item">
+						<span role="gridcell" class="gc" tabindex="0">
+							<a id="rec1" class="item_name" aria-label="Receipient 1" tabindex="-1" href="#">Receipient 1</a> 
+						</span>
+						<span role="gridcell" class="gc rmvgc" tabindex="-1" onkeydown="removeReceipientsOnKey();">
+							<span id="rb1" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb1 rec1" onclick="removeReceipients();" >x</span>
+						</span> 
+					</div>
+					<div role="row" class="item">
+						<span role="gridcell" class="gc" tabindex="-1">
+							<a id="rec2" class="item_name" aria-label="Receipient 2" tabindex="-1" href="#">Receipient 2</a> 
+						</span>
+						<span role="gridcell" class="gc rmvgc" tabindex="-1" onkeydown="removeReceipientsOnKey();">
+							<span id="rb2" class="rmv" tabindex="-1" role="button" aria-label="Remove" aria-labelledby=" rb2 rec2" onclick="removeReceipients();">x</span>
+						</span> 
+					</div>
+				</div><br/>
+				<div id="receipient_form">
+					<input type="text" id="txt_add_recp" class="txt" aria-label="Add New Receipient" placeholder="New receipient Name">	
+					<button type="button" id="btn_add" aria-label="Add Recepient">Add</button>
+					<div class="accessible_elem" role="region" aria-label="Change alert" aria-live="assertive" aria-atomic="true" aria-relevent="text"	>
+						Last change to recipient list, 
+						<span id="form-action-text"></span>
+					</div>
+					<div class="accessible_elem" id="changeRemove" role="region" aria-label="Change alert" aria-live="assertive" aria-atomic="true" aria-relevent="text">
+						<span id="form-action-text"></span>
+					</div>
+				</div>
+			</div>
+			
+			<!--div id="nux_recp_list" class="nux_rec_list hidden" role="region" aria-label="Grid Receipient List" tabindex="0" aria-expanded="true">
+				<p aria-describedby="desc">Choose Receipient From List</p>
+				<button type="button" class="btn_close" aria-label="close receipient list" >x</button>
+				<span id="desc" style="display:none;">Use Arrow Keys to Navigate User List</span>
+				<a class="user_name" id="one" tabindex="-1" href="#" aria-label="madhav saraf">Madhav Saraf</a><br>
+				<a class="user_name" tabindex="-1" href="#" aria-label="akhil boppana">Akhil Boppana</a>
+			</div>
+			
+			
+			<div role="radiogroup" aria-label="Radio Group" tabindex="0" role="application">
+				<input type="radio" role="radio" aria-setsize="3" aria-posinset="1" aria-label="hello" checked>
+				<input type="radio" role="radio" aria-setsize="3" aria-posinset="2" aria-label="World">
+				<input type="radio" role="radio"  aria-label="A11y1">
+			</div>
+			
+			<div id="alert_dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialog_label" aria-describedby="dialog_desc" tabindex="-1">
+              <h2 id="dialog_label">Confirmation</h2>
+              <div id="dialog_desc">
+                <p>Are you sure you want to discard all of your notes?</p>
+              <p id="word_count">44 words will be deleted.</p></div>
+              <div class="dialog_form_actions">
+                <button type="button">No</button>
+                <button type="button"id="notes_confirm">Yes</button>
+              </div>
+            </div-->
+		</main>
+			
+	</body>
+</html>

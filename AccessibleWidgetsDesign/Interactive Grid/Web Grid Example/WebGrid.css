@@ -1,0 +1,144 @@
+body{
+	box-sizing:border-box;
+}
+.accessible_elem {
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.send_to_box{
+	background:lightslategrey;
+	border-radius:15px;
+	padding:15px;
+	font-family:segoe print;
+	font-size:1.5em;
+}
+.itemlist{
+	background:white;
+	border-radius:5px;
+	padding:5px 15px;
+	min-height:35px;
+	margin-left:150px;
+	margin-top:-50px;
+	
+}	
+.item_name{
+	text-decoration:none;
+	color:black;
+	font-family:consolas;
+}
+.item{
+	display:inline-block;
+	padding:.4em;
+	width:auto;
+	height:35px;
+	position:relative;
+	background:lightgray;
+	color:red;
+	border-radius:5px;
+	cursor:pointer;
+	font-size:.8em;
+	margin-left:10px;
+}
+[role="gridcell"], [role="gridcell"] [tabindex] {
+	display: inline-block;
+	position: relative;
+}
+[role="gridcell"]:focus, [role="gridcell"] *:focus 
+{
+	outline: #005a9c;
+	outline-style: dotted;
+	outline-width: 3px;
+}
+#btn_add{
+	background:orange;
+	border-radius:5px;
+	border:none;
+	width:100px;
+	color:white;
+	height:30px;
+}
+#txt_add_recp{
+	font-size:14px;
+	width:300px;
+	height:35px;
+	border-radius:5px;
+	border:none;
+	padding-left:10px;
+	color:black;
+	margin-left:150px;
+}
+input[type="text"]:focus, #btn_add:focus{
+	outline: black;
+	outline-style: dotted;
+	outline-width: 3px;
+}
+.rmv{
+	padding-left:5px;
+	cursor:pointer;
+	font-family:consolas;
+	font-weight:bold;
+}
+.nux_rec_list
+{
+	background: #eaf9ef;
+	position: absolute;
+	max-width: 500px;
+	border: 1px solid #bbb;
+	padding: 0 15px 20px;
+	margin-top: 0px;
+	margin-left:160px;
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+}
+.nux_rec_list:after, .nux_rec_list:after
+{
+	bottom: 100%;
+	left: 20px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.nux_rec_list:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: #eaf9ef;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.nux_rec_list:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: #bbb;
+	border-width: 11px;
+	margin-left: -11px;
+}
+.nux_rec_list a{
+	text-decoration:none;
+	display:inline-block;
+	padding:10px;	
+	margin:2px;
+}
+.nux_rec_list a:focus, .nux_rec_list a:hover{
+	outline: #005a9c;
+	outline-style: dotted;
+	outline-width: 3px;
+}
+.hidden{
+	display:none;
+}
+.btn_close{
+	float:right;
+	top:100px;
+	border:none;
+	background:trasnparent;
+}
+.btn_close:hover, .btn_close:focus{
+	outline:dotted black 3px;
+}
