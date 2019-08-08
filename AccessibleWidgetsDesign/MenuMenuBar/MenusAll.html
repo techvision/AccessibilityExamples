@@ -1,0 +1,328 @@
+<html>
+	<head>
+		<title>Menu Navigation Using Arrow</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="MenusAll.js"></script>
+		<style>
+			.nav-container
+			{
+				height:55px;
+				width:80%;
+				background:#E8A87C;//#E7717D;
+				box-shadow:0px 0px 5px 0px black;
+				margin:auto;
+			}
+			ul[role="menubar"]
+			{
+				margin:10px;
+				padding:0;
+				list-style-type:none;
+				font-size:1.5em;
+			}
+			ul[role="menubar"] > li
+			{
+				display:inline-block;
+				padding:0;
+				width:auto;
+				height:auto;
+				position:relative;
+				border-radius:5px;
+			}
+			ul[role="menubar"] li
+			{
+				list-style-type:none;
+				margin:10px;
+				padding:0;
+				color:black;
+				border-radius:5px;
+			}
+			ul[role="menubar"] li a 
+			{
+				outline:none;
+				text-decoration:none;
+				color:black;
+				font-family:calibri;
+				width:100%;
+				display:inline-block;
+				margin:3px;
+			}
+			.popup-menu
+			{
+				display:none;
+				position:absolute;
+				background:lightgrey;
+				height:auto;
+				width:200px;
+				left:-20px;
+				top:40px;
+				margin:0;
+				padding:0;
+			}
+			ul[role="menubar"] ul[role="menu"] li
+			{
+				text-align:center;
+				font-size:20px;
+			}
+			
+			.float-right
+			{
+				display:none;
+				position:absolute;
+				background:lightgrey;
+				height:auto;
+				width:200px;
+				left:200px;
+				top:80px;
+				margin:0;
+				padding:0;
+			}
+			.context-button{
+				width:200px;
+				height:30px;
+				background:orange;
+				border:none;
+				margin:10px;
+				box-shadow:0px 0px 4px 0px grey;
+				border-radius:5px;
+			}
+			.context-button:focus{
+				border:solid steelblue 3px;
+			}
+			.context_menu
+			{
+				background:tan;
+				width:200px;
+				height:auto;
+				margin:10px;
+				box-shadow:0px 5px 10px #888888;
+				position:relative;
+				display:none;
+			}
+			.context_menu ul 
+			{
+				list-style-type:none;
+				width:100%;
+				overflow:auto;
+				margin:0;
+				padding:0;
+			}
+			.context_menu ul li
+			{
+				height:30px;
+				font-size:15px;
+				font-weight:bold;
+				font-family:consolas;
+				text-align:center;
+			}
+			
+			aa{
+				text-decoration:none;
+				outline:none;
+			}
+			.btn_menu
+			{
+				border:none;
+				background:transparent;
+				width:100%;
+				color:purple;;
+			}
+			.progress
+			{
+				border-radius:100%;
+			}
+			
+			
+			[contenteditable=true]:empty:before{
+				content: attr(placeholder);
+				display: block;
+			}
+
+			p[contenteditable=true] {
+				border: 2px solid #AAA;
+				width: 200px;
+				padding: 5px;
+				border-radius:10px;
+				//outline:dotted steelblue 2px;
+			}
+		</style>		
+		<script>
+			$(document).ready(function()
+			{
+				/*$("a").keydown(function(e)
+				{
+					switch(e.keyCode)
+					{
+						case 38 : var last_menu_index = $(this).index();
+								  if( last_menu_index == 0)
+								  {
+									$(".context_menu ul li a").attr("tabindex","-1");
+									$(this).parent().parent().children().eq(4).children("a").focus().attr("tabindex","0");
+								  }
+								  else
+									$(".context_menu ul li a").attr("tabindex","-1");
+									$(this).parent().prev("li").children("a").focus().attr("tabindex","0");break;
+								  
+						case 40 : var last_menu_index=$(this).index();
+								  if(last_menu_index == $(this).length-1)
+								  {
+									$(".context_menu ul li a").attr("tabindex","-1");
+									$(this).parent().parent().children().eq(0).children("a").focus().attr("tabindex","0");
+								  }
+								  else
+									$(".context_menu ul li a").attr("tabindex","-1");
+									$(this).parent().next("li").children("a").focus().attr("tabindex","0");break;
+						//case 13: $(this).children().focus();
+					}
+					/*$("a").focusin(function()
+					{
+						$(this).parent().css("border","solid steelblue 2px");
+					});
+					$("a").focusout(function()
+					{
+						$(this).parent().css("border","none");
+					});*/
+				//});
+				var arr=['hello','welcome','heyyy'];
+				var c=0;
+				$("#link1, #first").click(function()
+				{
+					$("#hello").css("display","block").text("ascending order"+arr[c++]);
+				});
+								
+				$(".btn_menu").keydown(function(evt)
+				{
+					switch(evt.keyCode)
+					{
+						case 38 : $(this).prev().focus();break;
+						
+						case 40 : $(this).next().focus();break;
+					}
+				});
+			});		
+		</script>
+	</head>
+	<body>
+	
+	<div class="nav-container">
+		<nav aria-label="General Navigational Menus">
+			<ul role="menubar" id="general-menubar">
+				<li role="none">
+					<a href="#" role="menuitem" tabindex="0">Home</a>
+				</li>
+				<li role="none">
+					<a href="#" aria-haspopup="true" aria-expanded="false" role="menuitem" tabindex="-1">
+						Courses
+						<img src="../MenusAll/down-arrow.png" height="20px" width="25px" role="presentation"/>
+					</a>
+					<ul role="menu" tabindex="-1" class="popup-menu"> 
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">HTML</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Java Script</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">JQuery</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Bootstrap</a>
+						</li>
+					</ul>
+				</li>
+				<li role="none">
+					<a href="#" aria-haspopup="true" aria-expanded="false" role="menuitem" tabindex="-1">
+						Videos 
+						<img src="../MenusAll/down-arrow.png" height="20px" width="25px"role="presentation"/>
+					</a>
+					<ul role="menu" class="popup-menu"> 
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">HTML</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">XML</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Java</a>
+						</li><li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Python</a>
+						</li>
+					</ul>
+				</li>
+				<li role="none">
+					<a href="#" aria-haspopup="true" aria-expanded="false" role="menuitem" tabindex="-1">Accessibility 
+						<img src="../MenusAll/down-arrow.png" height="20px" width="25px"role="presentation"/>
+					</a>
+					<ul role="menu" class="popup-menu"> 
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Overview</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Guidelines</a>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Aria authoring practices
+								<img src="../MenusAll/right-arrow.png" height="20px" width="25px"role="presentation"/>
+							</a>
+							<ul role="menu" class="float-right">
+								<li role="none">
+									<a role="menuitem" href="#" tabindex="-1">1.1</a>
+								</li>
+								<li role="none">
+									<a role="menuitem" href="#" tabindex="-1">1.2</a>
+								</li>
+							</ul>
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem" tabindex="-1">Design Patterns</a>
+						</li>
+					</ul>
+				</li>	
+				<li role="none">
+					<a href="#" role="menuitem" tabindex="-1">Contact Us</a>
+				</li>
+				<li role="none">
+					<a href="#" role="menuitem" tabindex="-1">About Us</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	
+	
+	<nav>
+		<button type="button" value="Context Menu" class="context-button">Context Menu</button>
+		<div class="context_menu">
+			<ul role="menu" aria-label="Navigation Menus">
+				<li role="none" id="first">
+					<a tabindex="-1"  role="menuitem"  href="#" id="link1">Home</a>
+				</li>
+				<li role="none">
+					<a tabindex="-1"  role="menuitem" href="https://www.google.com">Google</a>
+				</li>
+				<li role="none">
+					<a tabindex="-1" role="menuitem"  href="#">Help</a>
+				</li>
+				<li  role="none">
+					<a tabindex="-1" role="menuitem"  href="#">login</a>
+				</li>
+				<li  role="none">
+					<a tabindex="-1"  role="menuitem" href="#">logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+		<div class="context_menu" role="application" aria-label="Context-menu">
+			<button type="button" class="btn_menu">Menu 2</button>
+			<button type="button" class="btn_menu">Menu 2</button>
+			<button type="button" class="btn_menu">menu 3</button>
+			<button type="button" class="btn_menu">Menu 4</button>
+			<button type="button" class="btn_menu">Menu 5</button>
+		</div>
+		
+		
+		
+		
+		<div id="resizable" style="width:250px; height:200px; border:solid; display:none;">
+			<p placeholder="Insert text here..." contenteditable="true"></p>
+		</div>
+	</body>
+</html>
