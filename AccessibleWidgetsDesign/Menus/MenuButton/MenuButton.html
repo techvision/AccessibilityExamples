@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>Accessible MenuButton Example</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="MenuButton.js"></script>
+		<style>
+			.nav-menu-button{
+				width:200px;
+				height:35px;
+				background:orange;
+				border:none;
+				margin:10px;
+				box-shadow:0px 0px 4px 0px grey;
+				border-radius:5px;
+				font-family:calibri;
+				font-size:20px;
+			}
+			.nav-menu-button:focus
+			{
+				border:solid steelblue 3px;
+			}
+			.nav-sub-menu
+			{
+				background:lightgrey;
+				width:450px;
+				height:162px;
+				margin:-10px 0px 0px 10px;
+				box-shadow:0px 5px 10px #888888;
+				position:relative;
+				display:none;
+				list-style-type:none;
+				overflow:none;
+				padding:0;
+			}
+			.nav-sub-menu li
+			{
+				height:30px;
+				font-size:15px;
+				font-weight:bold;
+				font-family:calibri;
+				text-align:left;
+				border:solid grey 1px;
+			}
+			a{
+				text-decoration:none;
+				outline:none;
+				padding:10px;
+				color:black;
+				display:inline-block;
+				width:100%;
+			}
+			.btn_menu
+			{
+				border:none;
+				background:transparent;
+				width:100%;
+				color:purple;;
+			}
+			img[role = "presentation"]
+			{
+				position:absolute;
+				margin:-3px 0px 0px 5px;
+			}
+		</style>	
+	</head>
+	<body>
+		<nav>
+		    <div role="application" class="container">
+				<button type="button" class="nav-menu-button" id="navButton" aria-haspoup="true" aria-expanded="false">
+					Accessibility
+					<img src="fav_down_arrow.png" height="20px" width="20px" alt="" role="presentation">
+				</button>
+				<ul class="nav-sub-menu" role="menu" aria-labelledby="navButton">
+					<li role="none">
+						<a tabindex="0"  role="menuitem"  href="#">Overview</a>
+					</li>
+					<li role="none">
+						<a tabindex="-1"  role="menuitem" href="https://www.google.com">WCAG 2.1</a>
+					</li>
+					<li role="none">
+						<a tabindex="-1" role="menuitem"  href="#">Aria Authoring Practices 1.1</a>
+					</li>
+					<li  role="none">
+						<a tabindex="-1" role="menuitem"  href="#">Design Patterns</a>
+					</li>
+					<li  role="none">
+						<a tabindex="-1"  role="menuitem" href="#">Keyboard Interactions</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</body>
+<html>
