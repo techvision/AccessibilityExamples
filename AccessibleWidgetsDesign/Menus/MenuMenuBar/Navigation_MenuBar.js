@@ -36,7 +36,7 @@ $(document).ready(function()
 	});
 	$("a[role='menuitem']").focusin(function()
 	{
-		$(this).parent().css("background-color","mediumseagreen");
+		$(this).parent().css("background-color","coral");//mediumseagreen
 	});
 
 	$("a[role='menuitem']").focusout(function()
@@ -54,7 +54,7 @@ $(document).ready(function()
 			{
 				$(this).next().css("display", "block");
 				$(this).attr("aria-expanded", "true");
-				$(this).parent().css("background-color", "mediumseagreen");
+				$(this).parent().css("background-color", "coral");
 			}
 			else
 			{
@@ -62,12 +62,12 @@ $(document).ready(function()
 				$("ul[role='menu']").prev().attr("aria-expanded", "false");
 				$(this).next().css("display", "block");
 				$(this).attr("aria-expanded", "true");
-				$(this).parent().css("background-color", "mediumseagreen");
+				$(this).parent().css("background-color", "coral");
 			}
 		}
 		else
 		{
-			$(this).parent().css("background-color", "mediumseagreen");
+			$(this).parent().css("background-color", "coral");
 			$("ul[role='menu']").prev().attr("aria-expanded", "false");
 		}
 	},
