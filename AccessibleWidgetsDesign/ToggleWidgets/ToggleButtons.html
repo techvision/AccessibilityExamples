@@ -1,7 +1,7 @@
-<html>
+<!DOCTYPE html lang="en-US">
 	<head>
 		<title>Toggle Button</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script>
 		
 			$(document).ready(function()
@@ -13,6 +13,10 @@
 						if($(this).attr("id") == "addNewRecord")
 						{
 							changeToggle();
+						}
+						else
+						{
+							langToggle();
 						}
 					}
 				});
@@ -90,14 +94,15 @@
 		</style>
 	</head>
 	<body>
+		<h1>Accessible Toggle Widgets</h1>
 		<div class="container">
-			<label id="forLabel">Add New Record</label>
+			<label id="forLabel">Add New Record(Using aria-pressed)</label>
 			<div aria-pressed="false" tabindex="0" role="button" aria-labelledby="forLabel" onclick="changeToggle();" id="addNewRecord" class="containerElem">
 				<span class="on" id="on"></span>
 				<span class="off" id="off">No</span>
 			</div>
 			<br>
-			<label id="langLabel">Add New language</label>
+			<label id="langLabel">Add New language(Using aria-checked)</label>
 			<div aria-checked="false" tabindex="0" role="switch" aria-labelledby="langLabel" onclick="langToggle();" id="addNewLang" class="containerElem">
 				<span class="on" id="onLang"></span>
 				<span class="off" id="offLang">No</span>
